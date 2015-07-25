@@ -33,14 +33,19 @@ public class FizzBuzz {
 	}
 	
 	private static String converter(int number){
-		if((number % 15) == 0){
-			return "fizzbuzz";
-		}else if((number % 5) == 0){
-			return "buzz";
-		}else if((number % 3) == 0){
-			return "fizz";
+		String value = String.valueOf(number);
+		if(value.contains("3")){
+			return "lucky";
 		}else{
-			return String.valueOf(number);
+			if((number % 15) == 0){
+				return "fizzbuzz";
+			}else if((number % 5) == 0){
+				return "buzz";
+			}else if((number % 3) == 0){
+				return "fizz";
+			}else{
+				return String.valueOf(number);
+			}
 		}
 	}
 
