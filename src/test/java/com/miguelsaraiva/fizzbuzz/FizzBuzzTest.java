@@ -23,7 +23,7 @@ public class FizzBuzzTest {
 	    System.setOut(null);
 	}
 	
-	@Test
+    @Test
     public void testInputForExpectedOutputStepOne()
     {
     	FizzBuzz.main(new String[]{"1","20"});
@@ -62,14 +62,40 @@ public class FizzBuzzTest {
     public void testInputForExpectedOutputStepTwo()
     {
     	FizzBuzz.main(new String[]{"1","20"});
-    	Assert.assertEquals("1 2 lucky 4 buzz fizz 7 8 fizz buzz 11 fizz lucky 14 fizzbuzz 16 17 fizz 19 buzz", outContent.toString());
+    	Assert.assertNotEquals("1 2 lucky 4 buzz fizz 7 8 fizz buzz 11 fizz lucky 14 fizzbuzz 16 17 fizz 19 buzz", outContent.toString());
    }
     
     @Test
     public void testINegativeIncludedRangeStepTwo()
     {
     	FizzBuzz.main(new String[]{"-15","15"});
-    	Assert.assertEquals("fizzbuzz -14 lucky fizz -11 buzz fizz -8 -7 fizz buzz -4 lucky -2 -1 fizzbuzz 1 2 lucky 4 buzz fizz 7 8 fizz buzz 11 fizz lucky 14 fizzbuzz", outContent.toString());
+    	Assert.assertNotEquals("fizzbuzz -14 lucky fizz -11 buzz fizz -8 -7 fizz buzz -4 lucky -2 -1 fizzbuzz 1 2 lucky 4 buzz fizz 7 8 fizz buzz 11 fizz lucky 14 fizzbuzz", outContent.toString());
+    }
+    
+    @Test
+    public void testInputForExpectedOutputStepThree()
+    {
+    	FizzBuzz.main(new String[]{"1","20"});
+    	String[] out = outContent.toString().split("\n");
+    	Assert.assertEquals("1 2 lucky 4 buzz fizz 7 8 fizz buzz 11 fizz lucky 14 fizzbuzz 16 17 fizz 19 buzz", out[0]);
+    	Assert.assertEquals("fizz: 4", out[1]);
+    	Assert.assertEquals("buzz: 3", out[2]);
+    	Assert.assertEquals("fizzbuzz: 1", out[3]);
+    	Assert.assertEquals("lucky: 2", out[4]);
+    	Assert.assertEquals("integer: 10", out[5]);
+   }
+    
+    @Test
+    public void testINegativeIncludedRangeStepThree()
+    {
+    	FizzBuzz.main(new String[]{"-15","15"});
+    	String[] out = outContent.toString().split("\n");
+    	Assert.assertEquals("fizzbuzz -14 lucky fizz -11 buzz fizz -8 -7 fizz buzz -4 lucky -2 -1 fizzbuzz 1 2 lucky 4 buzz fizz 7 8 fizz buzz 11 fizz lucky 14 fizzbuzz", out[0]);
+    	Assert.assertEquals("fizz: 6", out[1]);
+    	Assert.assertEquals("buzz: 4", out[2]);
+    	Assert.assertEquals("fizzbuzz: 3", out[3]);
+    	Assert.assertEquals("lucky: 4", out[4]);
+    	Assert.assertEquals("integer: 14", out[5]);
     }
 
 }
