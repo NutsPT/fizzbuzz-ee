@@ -1,2 +1,2 @@
 # fizzbuzz-ee
-Initial FizzBuzz Creation
+FizzBuzz Solution Project
